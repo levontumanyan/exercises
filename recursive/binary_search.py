@@ -23,7 +23,7 @@ def binary_search(numbers, target):
 	else:
 		return True
 
-# the solution above does slicing, which is not needed.
+# the solution above does slicing, which is not needed. also it returns true/false and not the position of the element
 # instead we want to pass the function a new list in place
 
 
@@ -49,4 +49,3 @@ def binary_search(numbers, target, low=0, high=None):
 print(binary_search([1, 4, 6, 8, 12, 232, 565, 2134], 565))
 print(binary_search(range(1000), 565))
 print(binary_search([0, 1, 2, 3, 4, 5], 6))
-
