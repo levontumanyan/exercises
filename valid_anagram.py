@@ -16,4 +16,33 @@ Output: false
 
 def valid_anagram(word1, word2):
 
+	frequencies = {}
+
+	if (len(word1) != len(word2)):
+		return False
+
+	for char in word1:
+		if char not in frequencies:
+			frequencies[char] = 1
+		else:
+			frequencies[char] += 1
+
+	for char in frequencies:
+		if char not in word2:
+			return False
+		
+	return True
+
+def valid_anagram(word1, word2):
+	if len(word1) != len(word2):
+		return False
 	
+	for ch in word1:
+		if ch not in word2:
+			return False
+	return True
+
+print(valid_anagram("cat", "tac"))
+print(valid_anagram("cat", "tasc"))
+print(valid_anagram("cat", "cet"))
+print(valid_anagram("nagaram", "anagram"))
