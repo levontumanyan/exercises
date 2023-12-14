@@ -42,6 +42,9 @@ def valid_anagram(word1, word2):
 			return False
 	return True
 
+def valid_anagram(word1, word2):
+	return sorted(word1) == sorted(word2)
+
 print(valid_anagram("cat", "tac"))
 print(valid_anagram("cat", "tasc"))
 print(valid_anagram("cat", "cet"))
