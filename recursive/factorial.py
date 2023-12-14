@@ -1,13 +1,21 @@
-"""
-Factorial: The factorial of a positive integer n is defined as the product of all positive integers less than or equal to n. The base case is when n is 0 or 1, the factorial is 1. The recursive case is when n is greater than 1, the factorial is n times the factorial of n-1.
+
+"""2. Level 1: Write a program which can compute the factorial(recursively) of a given numbers.
+The results should be printed in a comma-separated sequence on a single line.
+Suppose the following input is supplied to the program:
+8
+Then, the output should be:
+40320
+
+#Hints:
+In case of input data being supplied to the question, it should be assumed to be a console input.
 """
 
-def factorial(num):
+def rfactorial(num):
 
-	if (num == 0):
+	if(num==1):
 		return 1
 	
-	return num*factorial(num-1)
+	return num*rfactorial(num-1)
 
-print(factorial(5))
-print(factorial(3))
+
+print(rfactorial(5))
