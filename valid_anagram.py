@@ -15,6 +15,22 @@ Output: false
 """
 
 def valid_anagram(word1, word2):
+	return sorted(word1) == sorted(word2)
+
+
+def valid_anagram(word1, word2):
+	if len(word1) != len(word2):
+		return False
+	
+	for ch in word1:
+		if ch not in word2:
+			return False
+	for ch in word2:
+		if ch not in word1:
+			return False
+	return True
+
+def valid_anagram(word1, word2):
 
 	frequencies = {}
 
@@ -27,25 +43,20 @@ def valid_anagram(word1, word2):
 		else:
 			frequencies[char] += 1
 
-	for char in frequencies:
-		if char not in word2:
+	for char in word2:
+		if char not in frequencies:
 			return False
-		
-	return True
-
-def valid_anagram(word1, word2):
-	if len(word1) != len(word2):
-		return False
+		else:
+			frequencies[char] -= 1
 	
-	for ch in word1:
-		if ch not in word2:
+	for freqs in frequencies.values():
+		if freqs != 0:
 			return False
+	
 	return True
-
-def valid_anagram(word1, word2):
-	return sorted(word1) == sorted(word2)
 
 print(valid_anagram("cat", "tac"))
 print(valid_anagram("cat", "tasc"))
 print(valid_anagram("cat", "cet"))
+print(valid_anagram("aabb", "abcd"))
 print(valid_anagram("nagaram", "anagram"))
