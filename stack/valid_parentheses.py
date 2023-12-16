@@ -41,6 +41,25 @@ def valid_parentheses(input_str):
 
 	return True
 
+def valid_parentheses(input_str):
+
+	# if len(input_str) % 2 != 0:
+	# 	return False
+	stack = []
+
+	brackets = { "(" : ")", "{" : "}", "[": "]" }
+	opening_brackets = set(["(", "[", "{"])
+
+	for ch in input_str:
+		if ch in opening_brackets:
+			stack.append(ch)
+		elif stack and ch == brackets[stack[-1]]:
+			stack.pop()
+		else:
+			return False
+
+	return stack == []
+
 print(valid_parentheses("("))	
 print(valid_parentheses("(]"))	
 print(valid_parentheses("()"))
