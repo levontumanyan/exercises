@@ -22,33 +22,60 @@ Output
 [null,null,null,null,-3,null,0,-2]
 
 Explanation
-MinStack minStack = new MinStack();
-minStack.push(-2);
-minStack.push(0);
-minStack.push(-3);
-minStack.getMin(); // return -3
-minStack.pop();
-minStack.top();    // return 0
-minStack.getMin(); // return -2
+MinStack print(minStack = new MinStack();
+print(minStack.push(-2);
+print(minStack.push(0);
+print(minStack.push(-3);
+print(minStack.getMin(); // return -3
+print(minStack.pop();
+print(minStack.top();    // return 0
+print(minStack.getMin(); // return -2
 """
 
 class MinStack():
 
-	min = float('inf')
-
 	def __init__(self):
-		self.structure = []
+		self.main_stack = []
+		self.min_stack = []
 
 	def push(self, val: int) -> None:
-		if val < min:
-			min = val
-		self.structure.append(val)
+		self.main_stack.append(val)
+		
+		if not self.min_stack or val <= self.min_stack[-1]:
+			self.min_stack.append(val)
 
 	def pop(self) -> None:
-		return self.structure[:-1]
+		popped = self.main_stack.pop()
+
+		if popped == self.min_stack[-1]:
+			self.min_stack.pop()
 
 	def top(self) -> int:
-		return self.structure[-1]
+		return self.main_stack[-1]
 
 	def getMin(self) -> int:
-		return min
+		return self.min_stack[-1]
+
+minStack = MinStack()
+
+print(minStack.push(-2))
+print(minStack.push(0))
+print(minStack.push(-3))
+print(minStack.push(4))
+print(minStack.push(5))
+print(minStack.getMin())
+print(minStack.pop())
+print(minStack.top())
+print(minStack.getMin())
+
+"""
+["MinStack","push","push","push","getMin","pop","top","getMin"]
+[[],[-2],[0],[-3],[],[],[],[]]
+
+[-2, 0, -3, 4, 5, 2, -5] get min [-3]
+main_stack = [-2, 0, -3, 4, 5, 2]
+min_stack = [5, 4, 0, -2, -3]
+
+
+
+"""
