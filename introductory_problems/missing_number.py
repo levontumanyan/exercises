@@ -48,10 +48,9 @@ def missing_number(length, nums):
 
 def missing_number(length, nums):
 	numbers = list(map(int, nums.split()))
-	xor_all_numbers = reduce(lambda x,y: x^y, range(1, length + 1))
-	for number in numbers:
-		xor_all_numbers ^= number
-	return xor_all_numbers
+	xor_correct_numbers = reduce(lambda x,y: x^y, range(1, length + 1))
+	xor_wrong_numbers = reduce(lambda x,y: x^y, numbers)
+	return xor_correct_numbers ^ xor_wrong_numbers
 
 # length = int(input())
 # nums = input()
