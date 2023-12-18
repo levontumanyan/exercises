@@ -1,3 +1,5 @@
+from functools import reduce
+
 """
 You are given all numbers between 1,2,\ldots,n except one. Your task is to find the missing number.
 Input
@@ -31,10 +33,25 @@ def missing_number(length, nums):
 	return correct_sum - wrong_sum
 
 def missing_number(length, nums):
-	nums = [int(i) for i in nums.split(" ")]
-	for i in range(len(nums) - 1):
-		if (abs(nums[i] - nums[i+1]) != 1):
-			return abs(nums[i] - nums[i+1])
+	correct_sum = length*(length+1) // 2
+	wrong_sum = sum([int(i) for i in nums.split(" ")])
+	return correct_sum - wrong_sum
+
+def missing_number(length, nums):
+	numbers = list(map(int, nums.split()))
+	xor_all_numbers = 0
+	for i in range(1, length+1):
+		xor_all_numbers ^= i
+	for number in numbers:
+		xor_all_numbers ^= number
+	return xor_all_numbers
+
+def missing_number(length, nums):
+	numbers = list(map(int, nums.split()))
+	xor_all_numbers = reduce(lambda x,y: x^y, range(1, length + 1))
+	for number in numbers:
+		xor_all_numbers ^= number
+	return xor_all_numbers
 
 # length = int(input())
 # nums = input()
