@@ -101,6 +101,54 @@ class Solution:
 			Solution.memo[i] = self.counting_bits(i)
 		return list(Solution.memo.values())[:n+1]
 
-solution = Solution()
-print(solution.countBits(4))
-print(solution.countBits(1))
+#solution = Solution()
+# print(solution.countBits(4))
+# print(solution.countBits(1))
+
+def countBits(n):
+    ans = [0] * (n + 1)
+    for i in range(1, n + 1):
+        ans[i] = ans[i >> 1] + (i & 1)
+    return ans
+
+#print(countBits(4))
+
+"""
+i: 0 - 0
+i: 1 - 1
+i: 2 - 10
+i: 3 - 11
+i: 4 - 100
+i: 5 - 101	
+i: 6 - 110
+i: 7 - 111
+i: 8 - 1000
+
+countBits(8) = countBits()
+
+"""
+
+def count_zero_bits(num):
+	if (num == 1):
+		return 0
+	
+	if ( num & 1 == 0):
+		return 1 + count_zero_bits(num >> 1)
+	else:
+		return count_zero_bits(num >> 1)
+
+# print(count_zero_bits(8))
+# print(count_zero_bits(4))
+# print(count_zero_bits(5))
+
+# count up to num for each num how many zeroes.
+def count_zero_bits(num):
+	#zero_bits = [1]*(num + 1)
+	zero_bits = [i for i in range(num + 1)]
+	for i in range(1, num + 1):
+		zero_bits[i] = zero_bits[i >> 1] + (i & 1 == 0)
+	return zero_bits
+
+#print(count_zero_bits(8))
+print(count_zero_bits(5))
+
