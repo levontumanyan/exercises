@@ -28,7 +28,26 @@ def maximum_2sum_subarray(nums):
 
 	return current_max
 
-print(maximum_2sum_subarray())
+print(maximum_2sum_subarray([1, 2, 2, 1, 3, 1, 4, 4, 2, 7]))
+print(maximum_2sum_subarray([0, 1]))
+print(maximum_2sum_subarray([i for i in range(100)]))
+
 
 def maximum_sum_subarray(k, nums):
-	pass
+	current_max = 0
+	window_start = 0
+	window_end = k-1
+
+	while window_end < len(nums):
+		current_max = max( current_max, sum(nums[window_start: window_end + 1]))
+		window_start += 1
+		window_end += 1
+	
+	return current_max
+
+print(maximum_sum_subarray(2, [1, 2, 2, 1, 3, 7]))
+print(maximum_sum_subarray(2, [1, 2, 2, 1, 3, 1, 4, 4, 2, 7]))
+print(maximum_sum_subarray(2, [0, 1]))
+print(maximum_sum_subarray(2, [i for i in range(100)]))
+print(maximum_sum_subarray(3, [1, 2, 2, 1, 3, 7]))
+print(maximum_sum_subarray(3, [2, 1, 5, 1, 3, 2]))
