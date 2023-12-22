@@ -35,7 +35,31 @@ def substrings_with_no_repeated_chs(string):
 		window_end += 1	
 	return count
 
-
-
 print(substrings_with_no_repeated_chs("aababcabc"))
 print(substrings_with_no_repeated_chs("xyzzaz"))
+
+# Let's change the problem statement. We accept k and string. Find number of k length substrings with no repeated characters. k >= 2 # looks correct hopefully
+
+def substrings_with_no_repeated_chs(k, string):
+	result = []
+	current_letters = set()
+	window_start = 0
+	window_end = k - 1
+
+	while window_end < len(string):
+		for i in range(len(string[window_start:window_end+1])):
+			if (string[window_start:window_end+1][i] not in current_letters):
+				current_letters.add(string[window_start:window_end+1][i])
+			else:
+				result.append(string[window_start:window_end+1])
+				break
+		current_letters = set()
+		window_start += 1
+		window_end += 1
+
+	return (len(string) - k + 1) - len(result)
+
+print(substrings_with_no_repeated_chs(3, "aababcabc"))
+print(substrings_with_no_repeated_chs(4, "aababcabc"))
+print(substrings_with_no_repeated_chs(4, "abcd"))
+print(substrings_with_no_repeated_chs(4, "abcdabcd"))
