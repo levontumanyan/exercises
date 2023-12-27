@@ -5,7 +5,7 @@ For example, consider array [ 0, 0, 1, 0, 1, 1, 1, 0, 1, 1 ]. The answer is 3.
 
 """
 
-def continuous_ones(nums):
+def consecutive_ones(nums):
 	i = 0
 	j = 1
 	overall_max = 0
@@ -32,7 +32,7 @@ def continuous_ones(nums):
 	return overall_max
 
 
-def continuous_ones(nums):
+def consecutive_ones(nums):
 	max_len = 0
 	window_start = 0
 
@@ -44,6 +44,69 @@ def continuous_ones(nums):
 	return max(max_len, len(nums) - window_start)
 		
 	
-#print(continuous_ones([0, 1, 1, 0, 0, 1, 1, 1]))
-print(continuous_ones([1, 0, 1, 1, 0, 0, 1, 1, 1]))
+#print(consecutive_ones([0, 1, 1, 0, 0, 1, 1, 1]))
+#print(consecutive_ones([1, 0, 1, 1, 0, 0, 1, 1, 1]))
 
+def consecutive_ones(nums):
+	window_start = 0
+	window_end = 1
+	current_count = 0
+	max_count = 0
+
+	while window_end < len(nums):
+		for num in nums[window_start:window_end+1]:
+			if num == 1:
+				current_count += 1
+				max_count = max(current_count, max_count)
+				continue
+			else:
+				current_count = 0
+				continue
+		window_start = window_end
+		window_end += 1
+	
+	return max_count
+
+def consecutive_ones(nums):
+	window_start = 0
+	window_end = 0
+	current_count = 0
+	max_count = 0
+
+	while window_end < len(nums):
+		if nums[window_start:window_end] == 1:
+			current_count += 1
+		
+
+def consecutive_ones(nums):
+    max_count = 0
+    current_count = 0
+
+    for window_end in range(len(nums)):
+        if nums[window_end] == 1:
+            current_count += 1
+            max_count = max(current_count, max_count)
+        else:
+            current_count = 0
+
+    return max_count
+
+# print(consecutive_ones([1, 0, 1, 1, 0, 0, 1, 1, 1]))
+# print(consecutive_ones([1, 0, 1, 1, 0, 0, 1, 1, 1, 1]))
+# print(consecutive_ones([1, 0, 1, 1, 0, 0, 1, 1]))
+
+def consecutive_ones(nums):
+	current_count = 0
+	max_count = 0
+
+	for num in nums:
+		if num == 1:
+			current_count += 1
+			max_count = max(current_count, max_count)
+		else:
+			current_count = 0
+	return max_count
+			
+print(consecutive_ones([1, 0, 1, 1, 0, 0, 1, 1, 1]))
+print(consecutive_ones([1, 0, 1, 1, 0, 0, 1, 1, 1, 1]))
+print(consecutive_ones([1, 0, 1, 1, 0, 0, 1, 1]))
