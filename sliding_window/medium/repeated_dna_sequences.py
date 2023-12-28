@@ -52,13 +52,13 @@ def repeated_dna_sequences(sequences):
 	frequencies = {}
 	window_start = 0
 	window_end = 9
-	result = []
+	result = set()
 
 	while window_end < len(sequences):
 		ten_substring = sequences[window_start:window_end+1]
 
 		if ten_substring in frequencies:
-			result.append(ten_substring)
+			result.add(ten_substring)
 		else:
 			frequencies[ten_substring] = 1
 		
