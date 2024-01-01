@@ -1,3 +1,4 @@
+import math
 """
 You are given a positive integer num consisting only of digits 6 and 9.
 
@@ -41,5 +42,12 @@ def maximum69number(num):
 		result += digits[i] * pow(10, i)
 	
 	return result
+
+def maximum69number(num):
+	num_of_digits = int(math.log10(num) + 1)
+
+	for i in range(num_of_digits, 0, -1):
+		# Extract the left-most digit
+		digit = num // 10**(i - 1)
 
 print(maximum69number(699966))
