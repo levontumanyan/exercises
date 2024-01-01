@@ -42,6 +42,4 @@ def maximum69number(num):
 	
 	return result
 
-
-
 print(maximum69number(699966))
