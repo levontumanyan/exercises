@@ -31,6 +31,8 @@ def assign_cookies(greed_factors, cookie_sizes):
 			g_i += 1
 			c_i += 1
 			result += 1
+		elif greed_factors[g_i] > cookie_sizes[c_i] and c_i == len(cookie_sizes) - 1:
+			break
 		else:
 			c_i += 1
 	
