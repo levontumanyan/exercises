@@ -20,10 +20,9 @@ Explanation: The optimal pairing is (2, 1), (2, 5), (6, 6). min(2, 1) + min(2, 5
 def array_partition(nums):
 	sorted_nums = sorted(nums)
 
-	tupple_nums = sum(min(sorted_nums[i], sorted_nums[i+1]) for i in range(0, len(sorted_nums), 2))
-
-	return tupple_nums
+	return sum(min(sorted_nums[i], sorted_nums[i+1]) for i in range(0, len(sorted_nums), 2))
 	
-
+def array_partition(nums):
+	return sum(sorted(nums)[::2])
 	
 print(array_partition([6,2,6,5,1,2]))
