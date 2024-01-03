@@ -16,18 +16,29 @@ Input: [6, 7, 4, 3, 2, 1, 4, 5] Output: 7 (Index 1 is a peak), 5 (Index 7 is a p
 Note: The output can be any peak element in the array, and the array may contain multiple peaks.
 """
 
-def peak_finder(nums):
+def peak_finder(nums, i=0):
 	if len(nums) == 1:
-		return nums[0]
+		return i
 	if len(nums) == 2:
-		return max(nums)
+		if nums[0] > nums[1]:
+			return i
+		else:
+			return i + 1
 	
 	if nums[len(nums) // 2] > nums[len(nums) // 2 + 1] and nums[len(nums) // 2] > nums[len(nums) // 2 - 1]:
-		return nums[len(nums) // 2]
+		return i + (len(nums) // 2)
 	if nums[len(nums) // 2] < nums[len(nums) // 2 + 1]:
-		return peak_finder(nums[(len(nums) // 2 + 1):])
+		return peak_finder(nums[(len(nums) // 2 + 1):], i + (len(nums) // 2 + 1) )
 	else:
-		return peak_finder(nums[:(len(nums) // 2)])
+		return peak_finder(nums[:(len(nums) // 2)], i)
+
+print(peak_finder([6, 7, 4, 3, 5, 2, 1, 4, 5]))
+print(peak_finder([9, 2, 3, 4, 5, 6, 7]))
+print(peak_finder([9, 2, 3, 22, 5, 6, 7]))
+print(peak_finder([2, 1]))
+print(peak_finder([1,2,3]))
+print(peak_finder([1,3,2,1]))
+print(peak_finder([1,2,3,4,5,6,1]))
 
 def peak_finder(nums):
 	i = 0
