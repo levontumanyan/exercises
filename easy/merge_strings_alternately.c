@@ -18,7 +18,7 @@ int main() {
 
 char *mergeAlternately(char *word1, char *word2){
 	int merged_length = strlen(word1) + strlen(word2);
-	char *result = malloc((merged_length + 1)*sizeof(char));
+	char *result = (char *)malloc((merged_length + 1)*sizeof(char));
 
 	int word1p = 0;
 	int word2p = 0;
