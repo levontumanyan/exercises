@@ -42,6 +42,8 @@ int main() {
 }
 
 int* getConcatenation(int* nums, int numsSize, int* returnSize) {
+	*returnSize = 2 * numsSize;
+	
 	int *ans = (int *) malloc(sizeof(int) * (*returnSize));
 
 	memcpy(ans, nums, sizeof(int) * numsSize);
@@ -49,3 +51,4 @@ int* getConcatenation(int* nums, int numsSize, int* returnSize) {
 
 	return ans;
 }
+
