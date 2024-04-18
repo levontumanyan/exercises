@@ -36,13 +36,18 @@ then add the lowercase letter array to the capital letter array
 #include <string.h>
 
 char **sort_uppercase(char *sentence[], int length);
+void sort_uppercase_inplace(char *sentence[], int length);
 
 int main() {
 	char *sentence[] = {"Given", "a", "Sentence", "This", "problem", "the", "arrange", "is", "words"};
 	char **result = sort_uppercase(sentence, 9);
+	
+	char *sentence1[] = {"Given", "a", "hello", "Sentence", "This", "problem", "the", "arrange", "Babo", "is", "words", "Akanj"};
+	sort_uppercase_inplace(sentence, 9);
+	sort_uppercase_inplace(sentence1, 12);
 
 	for(int i = 0; i < 9; i++) {
-		printf("%s\n", result[i]);
+		printf("%s\n", sentence1[i]);
 	}
 }
 
@@ -78,31 +83,25 @@ char **sort_uppercase(char *sentence[], int length) {
 	return result;
 }
 
-// [0, 1, 2]
+void sort_uppercase_inplace(char *sentence[], int length) {
+	for (int i = 0; i < length; i++) {
+		for (int j = 0; j < length - 1; j++) {
+			if (sentence[j][0] >= 'a' && sentence[j][0] <= 'z') {
+				if (sentence[j + 1][0] >= 'A' && sentence[j + 1][0] <= 'Z') {
+					char *temp = malloc(strlen(sentence[j + 1]) + 1);
+					strcpy(temp, sentence[j + 1]);
+					sentence[j + 1] = sentence[j];
+					sentence[j] = temp;
+				}
+			}
+		}
+	}
+}
 
 /* 
-["hello", "Bye", "Yellow", "Geeeee", "Petty", "tree"]
-capital - [ 1, 2, 3, 4]
-lowercase - [0, 5]
+{"Given", "a", "Sentence", "This", "problem", "the", "arrange", "is", "words"}; 
 
-uppercase_index - 4
-lowercase_index - 2
-
-for (int i = 0; i < uppercase_index + 1; i++) {
-	strcpy(result[i], sentence[capitals[i]]);
-}
-
-i: 0 - 4
-result[0] <-- sentence[1]
-result[1] <-- sentence[2]
-result[2] <-- sentence[3]
-result[3] <-- sentence[4]
-
-for (int i = 0; i < lowercase_index + 1; i++) {
-	strcpy(result[i + lowercase_index], sentence[capitals[i]]);
-}
-
-i: 0 - 2
-result[4] <-- sentence[]
+- {"Given", "a", "Sentence", "This", "problem", "the", "arrange", "is", "words"};
+- {"Given", "a", "Sentence", "This", "problem", "the", "arrange", "is", "words"};
 
 */
