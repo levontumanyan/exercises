@@ -28,21 +28,25 @@ s consists of English letters, digits, symbols and spaces.
 #include <stdio.h>
 
 int lengthOfLongestSubstring(char* s);
+int lengthOfLongestSubstringFast(char* s);
 
 int main() {
-	/* assert(lengthOfLongestSubstring("abcabcbb") == 3);
+	assert(lengthOfLongestSubstring("abcabcbb") == 3);
 	assert(lengthOfLongestSubstring("bbbbb") == 1);
 	assert(lengthOfLongestSubstring("pwwkew") == 3);
 	assert(lengthOfLongestSubstring("") == 0);
 	assert(lengthOfLongestSubstring(" ") == 1);
 	assert(lengthOfLongestSubstring("au") == 2);
 	assert(lengthOfLongestSubstring("dvdf") == 3);
-	assert(lengthOfLongestSubstring("anviaj") == 5); */
+	assert(lengthOfLongestSubstring("anviaj") == 5);
 
 	printf("All tests passed!\n");
 	printf("%d\n", lengthOfLongestSubstring("abcabcbb"));
+	printf("%d\n", lengthOfLongestSubstringFast("abcabcbb"));
 	printf("%d\n", lengthOfLongestSubstring(" "));
+	printf("%d\n", lengthOfLongestSubstringFast(" "));
 	printf("%d\n", lengthOfLongestSubstring("dvdf"));
+	printf("%d\n", lengthOfLongestSubstringFast("dvdf"));
 	return 0;
 }
 
@@ -69,6 +73,32 @@ int lengthOfLongestSubstring(char* s) {
 		if (length > max_length) {
 			max_length = length;
 		}
+	}
+
+	return max_length;
+}
+
+int lengthOfLongestSubstringFast(char* s) {
+	int left = 0;
+	int right = 0;
+	int max_length = 0;
+
+	int frequencies[256] = {0};
+	
+	while (right < strlen(s)) {
+		if (frequencies[s[right]] == 1) {
+			frequencies[s[left]] = 0;
+			left++;
+		}
+		else {
+			frequencies[s[right]] = 1;
+			right++;
+		}
+
+		if (max_length < right - left) {
+			max_length = right - left;
+		}
+
 	}
 
 	return max_length;
