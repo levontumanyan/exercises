@@ -83,3 +83,15 @@ int getlinkedlistlength(struct ListNode* head) {
 
 	return length;
 }
+
+struct ListNode* middleNodeFast(struct ListNode* head) {
+	struct ListNode *fast = head;
+	struct ListNode *slow = head;
+
+	while (fast != NULL && fast->next != NULL) {
+		fast = fast->next->next;
+		slow = slow->next;
+	}
+
+	return slow;
+}
