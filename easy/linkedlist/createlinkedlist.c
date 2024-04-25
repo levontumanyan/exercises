@@ -36,6 +36,28 @@ void printlinkedlist(struct ListNode *head) {
 	printf("\n");
 }
 
+void printprevcur(struct ListNode *head) {
+	struct ListNode *current = head->next;
+	struct ListNode *prev = head;
+
+	while (current != NULL && current->next != NULL) {
+		printf("Previous: %d Current: %d / ", prev->val, current->val);
+		prev = prev->next;
+		current = current->next;
+	}
+}
+
+void print2prevcur(struct ListNode *head) {
+	struct ListNode *current = head;
+	struct ListNode *prev = NULL;
+
+	while (current != NULL && current->next != NULL) {
+		prev = current;
+		current = current->next;
+		printf("Previous: %d Current: %d / ", prev->val, current->val);
+	}
+}
+
 int main() {
 	struct ListNode *head = malloc(sizeof(struct ListNode *));
 	head->val = 12;
@@ -48,6 +70,9 @@ int main() {
 
 	struct ListNode *test1 = createlinkedlist(15);
 	printlinkedlist(test1);
+	printprevcur(test1);
+	printf("\n\n\n");
+	print2prevcur(test1);
 }
 
 
