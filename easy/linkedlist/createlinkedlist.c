@@ -28,6 +28,20 @@ struct ListNode *createlinkedlist(int size) {
 	return head;
 }
 
+
+
+
+
+
+
+
+
+struct ListNode *createlinkedlistdirect(int size) {
+	
+}
+
+
+
 void printlinkedlist(struct ListNode *head) {
 	while (head != NULL) {
 		printf("%d, ", head->val);
