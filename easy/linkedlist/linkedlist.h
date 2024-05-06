@@ -5,3 +5,4 @@ struct ListNode {
 
 void printlinkedlist(struct ListNode *head);
 struct ListNode *createlinkedlistfromarray(int arr[], int size);
+struct ListNode *appendlists(struct ListNode *head1, struct ListNode *head2);
