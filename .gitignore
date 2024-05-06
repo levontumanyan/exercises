@@ -1,5 +1,12 @@
 # .gitignore
+# Ignore files without an extension
+*
+!/**/
+!*.*
+
 __pycache__
 __pycache__/
 *.pyc
 .vscode
+*.dSYM
+
