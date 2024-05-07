@@ -62,15 +62,11 @@ struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *he
 	return NULL;
 }
 
-
-
-
-
 struct ListNode *getIntersectionNodeSina(struct ListNode *headA, struct ListNode *headB) {
 	/* This method's idea is to count the length of each of the lists.
 	If the two lists are the same size then walk along each list and once two nodes are the same then return the node
 	If the lists have different sizes then the longer list makes as many steps to get to the point where as many nodes are left to traverse as the shorted list has nodes, then once an equal node is reached return that node */
-	size_t diff = get_ll_length(headA) - get_ll_length(headB);
+	int diff = get_ll_length(headA) - get_ll_length(headB);
 
 	if (diff == 0) {
 		while (headA != NULL) {
@@ -83,13 +79,36 @@ struct ListNode *getIntersectionNodeSina(struct ListNode *headA, struct ListNode
 		return NULL;
 	}
 	else if (diff > 0) {
-		 
+		for (int i = 0; i < diff; i++) {
+			headA = headA->next;
+		}
+		while (headA != NULL) {
+			if (headA == headB) {
+				return headA;
+			}
+			headA = headA->next;
+			headB = headB->next;
+		}
+
+		return NULL;
 	}
 	else {
+		for (int j = 0; j > diff; j--) {
+			headB = headB->next;
+		}
 
+		while (headA != NULL) {
+			if (headA == headB) {
+				return headA;
+			}
+			headA = headA->next;
+			headB = headB->next;
+		}
+
+		return NULL;
 	}
-	
-	
+
+	return NULL;
 }
 
 void test_getIntersectionNode() {
@@ -98,11 +117,13 @@ void test_getIntersectionNode() {
 	struct ListNode *headA1 = appendlists(createlinkedlistfromarray((int[]){4, 1}, 2), shared);
 	struct ListNode *headB1 = appendlists(createlinkedlistfromarray((int[]){5, 0, 1}, 3), shared);
 	assert(getIntersectionNode(headA1, headB1) == shared);
+	assert(getIntersectionNodeSina(headA1, headB1) == shared);
 
 	// Test case 2: No intersection
 	struct ListNode *headA2 = createlinkedlistfromarray((int[]){2, 6, 4}, 3);
 	struct ListNode *headB2 = createlinkedlistfromarray((int[]){1, 5}, 2);
 	assert(getIntersectionNode(headA2, headB2) == NULL);
+	assert(getIntersectionNodeSina(headA2, headB2) == NULL);
 	printf("size: %zu\n", get_ll_length(headA2));
 	printf("size: %zu\n", get_ll_length(headB2));
 }
