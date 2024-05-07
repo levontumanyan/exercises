@@ -1,6 +1,6 @@
 #include <stdlib.h>
-#include "linkedlist.h"
 #include <stdio.h>
+#include "linkedlist.h"
 
 void printlinkedlist(struct ListNode *head) {
 	struct ListNode *current = head;
@@ -61,4 +61,15 @@ struct ListNode *appendlists(struct ListNode *head1, struct ListNode *head2) {
 	current->next = head2;
 
 	return head1;
+}
+
+size_t get_ll_length(struct ListNode *head) {
+	size_t i = 0;
+
+	while (head != NULL) {
+		head = head->next;
+		i++;
+	}
+
+	return i;
 }
