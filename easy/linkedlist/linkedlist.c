@@ -73,3 +73,14 @@ size_t get_ll_length(struct ListNode *head) {
 
 	return i;
 }
+
+struct ListNode *reverse_ll(struct ListNode *head) {
+	if (head == NULL || head->next == NULL) {
+		return head;
+	}
+
+	struct ListNode* rest = reversell_recursive(head->next);
+	head->next->next = head;
+	head->next = NULL;
+	return rest;
+}
