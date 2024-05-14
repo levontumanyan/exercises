@@ -12,6 +12,7 @@ void printlinkedlist(struct ListNode *head);
 struct ListNode *createlinkedlistfromarray(int arr[], int size);
 struct ListNode *appendlists(struct ListNode *head1, struct ListNode *head2);
 size_t get_ll_length(struct ListNode *head);
-struct ListNode *reverse_ll(struct ListNode *head);
+struct ListNode *reversell_recursive(struct ListNode *head);
+struct ListNode *reversell_iterative(struct ListNode *head);
 
 #endif

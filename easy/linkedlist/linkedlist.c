@@ -84,3 +84,18 @@ struct ListNode *reversell_recursive(struct ListNode *head) {
 	head->next = NULL;
 	return rest;
 }
+
+struct ListNode *reversell_iterative(struct ListNode *head) {
+	struct ListNode *prev = NULL;
+	struct ListNode *curr = head;
+	struct ListNode *next = NULL;
+
+	while (curr != NULL) {
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
+	}
+
+	return prev;
+}
