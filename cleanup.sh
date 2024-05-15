@@ -13,3 +13,5 @@ find $1 -type f ! -name "*.*" ! -path "*/.git/*" -print | while read file; do
         rm -f "$file"
     fi
 done
+
+find $1 -name "*.dSYM" -type d -prune -print -exec rm -rf {} +
