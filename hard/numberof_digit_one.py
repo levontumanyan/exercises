@@ -2,12 +2,10 @@ def countDigitOne(num):
 	ans = 0
 	m = num
 	dig = []
-	i = 0
 
 	while num > 0:
 		dig.append(num % 10)
 		num = num//10
-		i += 1
 
 	for i in range(len(dig) - 1, -1, -1):
 		while dig[i] > 2:
