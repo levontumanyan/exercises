@@ -102,7 +102,7 @@ struct ListNode *reversell_iterative(struct ListNode *head) {
 	return prev;
 }
 
-bool *is_equal(struct ListNode *list1, struct ListNode *list2) {
+bool is_equal(struct ListNode *list1, struct ListNode *list2) {
 	while (list1 != NULL && list2 != NULL) {
 		if (list1->val != list2->val) {
 			return false;
