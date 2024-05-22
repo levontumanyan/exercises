@@ -3,8 +3,6 @@ Given two strings ransomNote and magazine, return true if ransomNote can be cons
 
 Each letter in magazine can only be used once in ransomNote.
 
- 
-
 Example 1:
 
 Input: ransomNote = "a", magazine = "b"

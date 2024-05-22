@@ -3,8 +3,6 @@ Given an array of integers nums, return the number of good pairs.
 
 A pair (i, j) is called good if nums[i] == nums[j] and i < j.
 
- 
-
 Example 1:
 
 Input: nums = [1,2,3,1,1,3]
@@ -34,8 +32,7 @@ print(number_of_good_pairs([1,1,1,1]))
 print(number_of_good_pairs([1, 2, 3]))
 print(number_of_good_pairs([1, 2, 3, 1, 1, 3]))
 
-# next approach is to traverse the list once. add all the elements with their corresponding index in the 
-# hash table.
+# next approach is to traverse the list once. add all the elements with their corresponding index in the hash table.
 def number_of_good_pairs(nums):
 	element_to_indices = {}
 	for i in range(len(nums)):
