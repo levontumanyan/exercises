@@ -51,5 +51,3 @@ int main() {
 	test_truncateSentence();
 	return 0;
 }
-
-
