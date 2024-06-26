@@ -39,7 +39,7 @@ void test_truncateSentence() {
     assert(strcmp(truncateSentence(test3, 1), "Singleword") == 0);
 
     char test4[] = "This sentence has many words and we want to truncate it to just a few words";
-    assert(strcmp(truncateSentence(test4, 10), "This sentence has many words and we want to") == 0);
+    assert(strcmp(truncateSentence(test4, 10), "This sentence has many words and we want to truncate") == 0);
 
     char test5[] = "";
     assert(strcmp(truncateSentence(test5, 5), "") == 0);
