@@ -49,6 +49,7 @@ int *minOperations(char *boxes, int *returnSize) {
 	for (int i = 0; i < strlen(boxes); i++) {
 		if (boxes[i] == '1') {
 			ones_right += 1;
+			score += i;
 		}
 	}
 
@@ -56,16 +57,8 @@ int *minOperations(char *boxes, int *returnSize) {
 		ones_right--;
 	}
 
-	for (int i = 1; i < strlen(boxes); i++) {
-		if (boxes[i] == '1') {
-			score += i;
-		}
-	}
-
 	answer[0] = score;
-	// 110
-	// score starts: 1
-	// ones_right = 
+
 	for (int j = 1; j < strlen(boxes); j++) {
 		if (boxes[j] == '1') {
 			ones_right--;
