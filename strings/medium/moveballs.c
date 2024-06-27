@@ -43,27 +43,23 @@ int *minOperations(char *boxes, int *returnSize) {
 
 	// count the initial stats
 	int score = 0;
-	int ones_total = 0;
 	int ones_right = 0;
 	int ones_left = 0;
 	
 	for (int i = 0; i < strlen(boxes); i++) {
 		if (boxes[i] == '1') {
-			ones_total += 1;
+			ones_right += 1;
 		}
+	}
+
+	if (boxes[0] == '1') {
+		ones_right--;
 	}
 
 	for (int i = 1; i < strlen(boxes); i++) {
 		if (boxes[i] == '1') {
 			score += i;
 		}
-	}
-
-	if (boxes[0] == '0') {
-		ones_right = ones_total;
-	}
-	else if (boxes[0] == '1') {
-		ones_right = ones_total - 1;
 	}
 
 	answer[0] = score;
